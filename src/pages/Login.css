@@ -1,0 +1,11 @@
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 3rem 2.5rem;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+}
