@@ -225,3 +225,14 @@ img {
 .rounded-md { border-radius: var(--radius-md); }
 .rounded-lg { border-radius: var(--radius-lg); }
 .shadow-md { box-shadow: var(--shadow-md); }
+
+/* Global Mobile Product Grid Adjustments */
+@media screen and (max-width: 640px) {
+  .grid,
+  .featured-grid,
+  .category-feed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    padding: 8px !important;
+  }
+}

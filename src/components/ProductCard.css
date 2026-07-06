@@ -152,3 +152,27 @@
 .myntra-product-card .product-image-container.skeleton {
   background-color: #eaeaec;
 }
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 640px) {
+  .grid, .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    padding: 8px !important;
+  }
+
+  .product-image-container {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-title {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .product-price-current,
+  .product-price {
+    font-size: 15px;
+  }
+}
