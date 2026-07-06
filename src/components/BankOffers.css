@@ -13,8 +13,8 @@
 }
 
 .bank-strip-parent {
-  height: 76px;
-  max-height: 76px;
+  min-height: 76px;
+  height: auto;
   overflow: hidden;
   box-sizing: border-box;
 }

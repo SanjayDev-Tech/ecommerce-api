@@ -677,4 +677,68 @@
   .floating-offer-tab {
     display: none; /* Hide on mobile to save space */
   }
+
+  /* Main Sale Banner Mobile Fix */
+  .main-sale-banner-css.split-layout {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .banner-left-col {
+    flex: none;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .banner-left-col .discount-text {
+    font-size: 48px;
+  }
+
+  .banner-right-col {
+    flex: none;
+    height: 300px;
+    width: 100%;
+    justify-content: center;
+    padding-right: 0;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .model-group {
+    width: 45%;
+    max-width: 160px;
+  }
+
+  .floating-coupon-badge {
+    left: 10px;
+    top: -10px;
+    padding: 6px 12px;
+  }
+
+  .badge-text {
+    font-size: 14px;
+  }
+
+  /* Shop By Category Horizontal Scroll on Mobile */
+  .category-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+    gap: 16px;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .category-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .category-card {
+    min-width: 220px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
 }

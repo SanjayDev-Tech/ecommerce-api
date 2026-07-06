@@ -206,7 +206,7 @@
 
 @media (max-width: 768px) {
   .hero-carousel-wrapper {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
 
   .luxury-split-container {
@@ -217,7 +217,9 @@
 
   .slider-left-focus {
     flex: none;
-    height: 450px; /* Fixed height for image focus on mobile */
+    height: 60vw; /* Responsive height instead of fixed 450px */
+    min-height: 300px;
+    max-height: 350px;
     border-right: none;
     border-bottom: 1px solid #eaeaec;
   }
@@ -225,11 +227,28 @@
   .slider-right-list {
     flex: none;
     height: auto;
-    max-height: 500px; /* Allow scroll on mobile inside the container */
+    max-height: none;
+    overflow: hidden; /* Prevent scrolling since we only show active */
   }
   
   .grid-block-item {
-    min-height: 120px;
+    display: none; /* Hide inactive items on mobile for a clean carousel look */
+  }
+
+  .grid-block-item.active {
+    display: flex;
+    min-height: auto;
     padding: 1.5rem;
+    border-bottom: none;
+  }
+
+  .grid-block-item.active::before {
+    display: none; /* Remove left border indicator on mobile */
+  }
+
+  .block-expansion.expanded {
+    max-height: 60px;
+    opacity: 1;
+    margin-top: 10px;
   }
 }
