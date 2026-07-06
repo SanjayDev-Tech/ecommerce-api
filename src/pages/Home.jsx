@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom';
 import { HeroCarousel } from '../components/HeroCarousel';
 import { FeaturedProductsFeed } from '../components/FeaturedProductsFeed';
 import { CategoryProductsFeed } from '../components/CategoryProductsFeed';
+import { BudgetBargains } from '../components/BudgetBargains';
 import './Home.css';
 
 export const Home = () => {
-  const budgetBargains = [
-    { title: "T-Shirts", subtitle: "UNDER ₹999", img: "/images/tshirt.png", link: "/products?category=men's%20clothing" },
-    { title: "Workout-Ready Tops", subtitle: "UNDER ₹999", img: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&q=80", link: "/products?category=women's%20clothing" },
-    { title: "Tote Handbags", subtitle: "STARTING ₹699", img: "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&q=80", link: "/products" },
-    { title: "Dazzling Clutches", subtitle: "STARTING ₹599", img: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?w=400&q=80", link: "/products" },
-    { title: "Bold Sunglasses", subtitle: "UNDER ₹1299", img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80", link: "/products" },
-  ];
-
   const wowDeals = [
     { brand: "TOMMY HILFIGER", subtitle: "MIN. 50% OFF", desc: "Effortless Styles", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80", link: "/products?category=men's%20clothing" },
     { brand: "FRENCH CONNECTION", subtitle: "MIN. 55% OFF", desc: "Casual-Day Picks", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80", link: "/products?category=women's%20clothing" },
@@ -92,22 +85,7 @@ export const Home = () => {
       </div>
 
       {/* BUDGET BARGAINS */}
-      <section className="home-section">
-        <h2 className="section-title colored-title">BUDGET BARGAINS</h2>
-        <div className="slider-container">
-          <div className="slider-track">
-            {budgetBargains.map((item, index) => (
-              <Link to={item.link} key={index} className="slider-card bargain-card">
-                <img src={item.img} alt={item.title} />
-                <div className="card-overlay">
-                  <span className="card-subtitle">{item.subtitle}</span>
-                  <span className="card-title">{item.title}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BudgetBargains />
 
 
       {/* SHOP BY CATEGORY */}

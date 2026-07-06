@@ -13,6 +13,30 @@ export const Checkout = () => {
   const { addToast } = useToast();
   const navigate = useNavigate();
 
+  const [couponCode, setCouponCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+
+  const subtotal = getCartTotal();
+  const discountAmount = subtotal * discount;
+  const tax = (subtotal - discountAmount) * 0.08;
+  const finalTotal = subtotal - discountAmount + tax;
+
+  const handleApplyCoupon = (e) => {
+    e.preventDefault();
+    if (cart.some(item => item.category === "electronics")) { 
+      alert("Gift Cards/Coupons are not applicable on Electronics items."); 
+      return; 
+    }
+    
+    if (couponCode.toUpperCase() === 'SAVE20') {
+      setDiscount(0.20);
+      addToast('Coupon applied successfully!', 'success');
+    } else {
+      addToast('Invalid coupon code.', 'error');
+      setDiscount(0);
+    }
+  };
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -40,7 +64,7 @@ export const Checkout = () => {
         id: Math.floor(100000 + Math.random() * 900000), // Generate a random 6 digit order ID
         date: new Date().toISOString(),
         items: [...cart],
-        total: getCartTotal() * 1.08 // Include tax
+        total: finalTotal
       };
       
       addOrder(newOrder);
@@ -147,24 +171,44 @@ export const Checkout = () => {
           
           <hr className="summary-divider" />
           
+          <div className="coupon-section" style={{ padding: '16px 0' }}>
+            <form onSubmit={handleApplyCoupon} style={{ display: 'flex', gap: '8px' }}>
+              <input 
+                type="text" 
+                className="input" 
+                style={{ flex: 1 }}
+                placeholder="Code (e.g. SAVE20)" 
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+              />
+              <Button type="submit" variant="secondary">Apply</Button>
+            </form>
+          </div>
+          
           <div className="summary-row">
             <span className="text-secondary">Subtotal</span>
-            <span>{formatCurrency(getCartTotal())}</span>
+            <span>{formatCurrency(subtotal)}</span>
           </div>
+          {discount > 0 && (
+            <div className="summary-row" style={{ color: '#16a34a' }}>
+              <span>Discount</span>
+              <span>-{formatCurrency(discountAmount)}</span>
+            </div>
+          )}
           <div className="summary-row">
             <span className="text-secondary">Shipping</span>
             <span>Free</span>
           </div>
           <div className="summary-row">
             <span className="text-secondary">Tax</span>
-            <span>{formatCurrency(getCartTotal() * 0.08)}</span>
+            <span>{formatCurrency(tax)}</span>
           </div>
           
           <hr className="summary-divider" />
           
           <div className="summary-row total-row">
             <span>Total</span>
-            <span className="text-primary-color">{formatCurrency(getCartTotal() * 1.08)}</span>
+            <span className="text-primary-color">{formatCurrency(finalTotal)}</span>
           </div>
         </div>
       </div>

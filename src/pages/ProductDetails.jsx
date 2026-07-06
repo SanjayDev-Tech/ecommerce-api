@@ -63,8 +63,10 @@ export const ProductDetails = () => {
     return (
       <div className="container page-container">
         <div className="product-details-layout">
-          <div className="product-details-image-container">
-            <Skeleton style={{ paddingTop: '100%' }} />
+          <div className="product-main-content-left">
+            <div className="product-image-frame">
+              <Skeleton style={{ height: '100%' }} />
+            </div>
           </div>
           <div className="product-details-info">
             <Skeleton style={{ height: '36px', width: '80%', marginBottom: '1rem' }} />
@@ -95,13 +97,39 @@ export const ProductDetails = () => {
       <div className="product-view-wrapper">
         <div className="product-main-content">
           <div className="product-details-layout">
-        {/* Product Image */}
-        <div className="product-details-image-container card">
-          <img src={product.image} alt={product.title} className="product-details-image" />
-        </div>
+            {/* Left Column */}
+            <div className="product-main-content-left">
+              <div className="product-image-frame">
+                <img src={product.image} alt={product.title} />
+              </div>
+              
+              <div className="product-benefits">
+                <div className="benefit-item">
+                  <Truck size={24} className="text-primary-color" />
+                  <div>
+                    <h4 className="font-semibold">Free Delivery</h4>
+                    <p className="text-sm text-secondary">Enter your postal code for Delivery Availability</p>
+                  </div>
+                </div>
+                <div className="benefit-item">
+                  <RotateCcw size={24} className="text-primary-color" />
+                  <div>
+                    <h4 className="font-semibold">Return Delivery</h4>
+                    <p className="text-sm text-secondary">Free 30 Days Delivery Returns. Details</p>
+                  </div>
+                </div>
+                <div className="benefit-item">
+                  <ShieldCheck size={24} className="text-primary-color" />
+                  <div>
+                    <h4 className="font-semibold">1 Year Warranty</h4>
+                    <p className="text-sm text-secondary">Guaranteed 100% authentic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
         
-        {/* Product Info */}
-        <div className="product-details-info">
+            {/* Product Info */}
+            <div className="product-details-info">
           <div className="product-category text-primary-color uppercase tracking-wider font-semibold text-sm mb-2">
             {product.category}
           </div>
@@ -153,33 +181,9 @@ export const ProductDetails = () => {
               </button>
             </div>
           </div>
-          
-          <div className="product-benefits">
-            <div className="benefit-item">
-              <Truck size={24} className="text-primary-color" />
-              <div>
-                <h4 className="font-semibold">Free Delivery</h4>
-                <p className="text-sm text-secondary">Enter your postal code for Delivery Availability</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <RotateCcw size={24} className="text-primary-color" />
-              <div>
-                <h4 className="font-semibold">Return Delivery</h4>
-                <p className="text-sm text-secondary">Free 30 Days Delivery Returns. Details</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <ShieldCheck size={24} className="text-primary-color" />
-              <div>
-                <h4 className="font-semibold">1 Year Warranty</h4>
-                <p className="text-sm text-secondary">Guaranteed 100% authentic</p>
-              </div>
-            </div>
-          </div>
         </div>
-          </div>
-          
+      </div>
+      
           {/* Unified Metadata Engine */}
           <ProductMetadata product={product} />
           
