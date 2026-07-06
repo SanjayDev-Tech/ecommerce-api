@@ -95,7 +95,7 @@ export const DealsPopup = () => {
 
     const handleClaimOffer = () => {
         setIsOpen(false);
-        window.location.href = '/products/120';
+        navigate('/products/120');
     };
 
     if (!isOpen) return null;
