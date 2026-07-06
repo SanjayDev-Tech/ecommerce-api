@@ -1,0 +1,235 @@
+/* HeroCarousel.css - Luxury Asymmetric Split-Grid */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+.hero-carousel-wrapper {
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  padding: 0 1.5rem 3rem 1.5rem;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.luxury-split-container {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  background-color: #fafafa; /* Minimal off-white negative space */
+  border: 1px solid #eaeaec; /* Sharp thin outline border */
+  border-radius: 0px; 
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+/* 60% Left structural focus layout */
+.slider-left-focus {
+  flex: 0 0 60%;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid #eaeaec; /* Sharp thin outline border separator */
+  background-color: #eaeaec; /* Fallback skeleton */
+}
+
+.focus-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.focus-image.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* 40% Right sliding list module */
+.slider-right-list {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #fafafa; /* Off-white grid blocks */
+  /* Custom scrollbar for list module */
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #fafafa;
+}
+
+.slider-right-list::-webkit-scrollbar {
+  width: 4px;
+}
+.slider-right-list::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+.slider-right-list::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+}
+
+.grid-block-item {
+  flex: 1;
+  min-height: 140px; /* Base height for items */
+  border-bottom: 1px solid #eaeaec; /* Sharp thin outline separator */
+  padding: 2rem 2.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure last item doesn't have double border with container */
+.grid-block-item:last-child {
+  border-bottom: none;
+}
+
+.grid-block-item:not(.active):hover {
+  background-color: #f3f4f6; /* Very subtle hover feedback */
+}
+
+.grid-block-item.active {
+  background-color: #ffffff; /* pure white highlight for active */
+  flex: 1.6; /* Expand active item slightly */
+}
+
+/* Add a minimal solid border indicator for active state */
+.grid-block-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #0f172a;
+}
+
+/* Typography Templates */
+.block-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serif-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.2;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-block-item.active .serif-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+}
+
+.sans-subtitle {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Expansion logic for active item link */
+.block-expansion {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0;
+}
+
+.block-expansion.expanded {
+  max-height: 60px;
+  opacity: 1;
+  margin-top: 15px;
+}
+
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  border-bottom: 1px solid #0f172a;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+
+.explore-btn:hover {
+  opacity: 0.7;
+}
+
+.arrow {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.explore-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive Rules for Tablet & Mobile */
+@media (max-width: 1024px) {
+  .luxury-split-container {
+    height: 75vh;
+  }
+  
+  .slider-left-focus {
+    flex: 0 0 50%; /* Shift to 50/50 on medium screens */
+  }
+  
+  .slider-right-list {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-carousel-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .luxury-split-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .slider-left-focus {
+    flex: none;
+    height: 450px; /* Fixed height for image focus on mobile */
+    border-right: none;
+    border-bottom: 1px solid #eaeaec;
+  }
+
+  .slider-right-list {
+    flex: none;
+    height: auto;
+    max-height: 500px; /* Allow scroll on mobile inside the container */
+  }
+  
+  .grid-block-item {
+    min-height: 120px;
+    padding: 1.5rem;
+  }
+}

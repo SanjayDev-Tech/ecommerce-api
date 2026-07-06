@@ -95,16 +95,6 @@ export const Products = () => {
       <div className="products-layout">
         {/* Sidebar Filters */}
         <aside className="products-sidebar">
-          <div className="filter-group">
-            <h3 className="filter-title">Search</h3>
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className="input"
-              value={search}
-              onChange={handleSearchChange}
-            />
-          </div>
 
           <div className="filter-group">
             <h3 className="filter-title">Categories</h3>

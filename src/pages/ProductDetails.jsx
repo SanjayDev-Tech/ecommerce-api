@@ -9,6 +9,7 @@ import { formatCurrency } from '../utils/formatCurrency';
 import { Button } from '../components/Button';
 import { Skeleton } from '../components/Skeleton';
 import { ProductCard } from '../components/ProductCard';
+import { ProductMetadata } from '../components/ProductMetadata';
 import './ProductDetails.css';
 
 export const ProductDetails = () => {
@@ -91,7 +92,9 @@ export const ProductDetails = () => {
         <ArrowLeft size={20} /> Back to Products
       </Link>
       
-      <div className="product-details-layout">
+      <div className="product-view-wrapper">
+        <div className="product-main-content">
+          <div className="product-details-layout">
         {/* Product Image */}
         <div className="product-details-image-container card">
           <img src={product.image} alt={product.title} className="product-details-image" />
@@ -175,19 +178,33 @@ export const ProductDetails = () => {
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Related Products */}
-      {relatedProducts.length > 0 && (
-        <div className="related-products mt-16">
-          <h2 className="section-title text-left mb-6">Related Products</h2>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map(rp => (
-              <ProductCard key={rp.id} product={rp} />
-            ))}
           </div>
+          
+          {/* Unified Metadata Engine */}
+          <ProductMetadata product={product} />
+          
         </div>
-      )}
+        
+        {/* Related Products Sidebar */}
+        {relatedProducts.length > 0 && (
+          <div className="related-products-sidebar">
+            <h2 className="sidebar-title">Related Products</h2>
+            <div className="related-products-list">
+              {relatedProducts.map(rp => (
+                <Link to={`/products/${rp.id}`} key={rp.id} className="related-product-compact-card">
+                  <div className="rp-img-wrapper">
+                    <img src={rp.image} alt={rp.title} />
+                  </div>
+                  <div className="rp-info">
+                    <h4 className="rp-title">{rp.title}</h4>
+                    <div className="rp-price">${rp.price.toFixed(2)}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

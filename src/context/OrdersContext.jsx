@@ -1,20 +1,22 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import React, { createContext, useContext } from 'react';
+import { useAuth } from './AuthContext';
 
 const OrdersContext = createContext();
 
 export const useOrders = () => useContext(OrdersContext);
 
 export const OrdersProvider = ({ children }) => {
-  const [storedOrders, setStoredOrders] = useLocalStorage('ecommerce-orders', []);
-  const [orders, setOrders] = useState(storedOrders);
-
-  useEffect(() => {
-    setStoredOrders(orders);
-  }, [orders, setStoredOrders]);
+  const { user, addOrderToUser } = useAuth();
+  
+  // Directly extract orders from the authenticated user session mapped to localStorage
+  const orders = user?.orders || [];
 
   const addOrder = (order) => {
-    setOrders([order, ...orders]); // Add new order to the beginning of the list
+    if (user) {
+      addOrderToUser(order);
+    } else {
+      console.warn("Attempting to place an order without an active authenticated user session.");
+    }
   };
 
   return (

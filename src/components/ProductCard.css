@@ -1,19 +1,24 @@
-.product-card {
+.myntra-product-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: var(--surface-color);
+  background-color: #ffffff;
   text-decoration: none;
   color: inherit;
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.myntra-product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .product-image-container {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
-  background-color: white; /* keep it white to blend with product images from API */
+  padding-top: 133%; /* Tall aspect ratio approx 3:4 */
+  background-color: #f7f8f9;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .product-image {
@@ -22,93 +27,125 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 1.5rem;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-image {
-  transform: scale(1.05);
+.myntra-product-card:hover .product-image {
+  transform: scale(1.03);
+}
+
+.product-rating-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #282c3f;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.rating-star {
+  margin-left: 2px;
+  margin-right: 4px;
+}
+
+.rating-sep {
+  color: #d4d5d9;
+  margin: 0 4px;
+}
+
+.rating-count {
+  color: #535766;
 }
 
 .wishlist-btn {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
+  top: 12px;
+  right: 12px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaec;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
-  box-shadow: var(--shadow-sm);
+  color: #282c3f;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: all 0.2s ease;
   z-index: 10;
+  cursor: pointer;
 }
 
 .wishlist-btn:hover {
-  color: var(--danger-color);
-  transform: scale(1.1);
+  color: #ff3f6c;
+  transform: scale(1.05);
 }
 
 .wishlist-btn.active {
-  color: var(--danger-color);
+  color: #ff3f6c;
+  border-color: #ff3f6c;
 }
 
 .product-info {
-  padding: 1.25rem;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 }
 
-.product-category {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+.product-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #282c3f;
+  margin-bottom: 4px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-title {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-size: 13px;
+  color: #535766;
+  margin-bottom: 8px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex-grow: 1;
+  font-weight: 400;
 }
 
-.product-rating {
+.product-price-row {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+  gap: 6px;
+  font-size: 14px;
 }
 
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-}
-
-.product-price {
-  font-size: 1.25rem;
+.product-price-current {
   font-weight: 700;
-  color: var(--text-primary);
+  color: #282c3f;
+}
+
+.product-price-old {
+  color: #7e818c;
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+.product-discount {
+  color: #ff905a;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 /* Skeleton Specific Overrides */
-.product-card .product-image-container.skeleton {
-  background-color: var(--border-color);
+.myntra-product-card .product-image-container.skeleton {
+  background-color: #eaeaec;
 }

@@ -1,0 +1,29 @@
+.category-feed-section {
+  padding: 32px 16px;
+  margin-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.category-feed-section .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.category-feed-section .view-all-link {
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.category-feed-section .view-all-link:hover {
+  text-decoration: underline;
+}
+
+.category-feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}

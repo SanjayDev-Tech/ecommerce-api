@@ -55,7 +55,7 @@
 }
 
 .category-btn.active {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: rgba(255, 63, 108, 0.1);
   color: var(--primary-color);
 }
 

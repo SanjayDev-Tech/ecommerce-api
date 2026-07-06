@@ -1,104 +1,145 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, ShieldCheck, Truck } from 'lucide-react';
-import { fetchProducts } from '../services/api';
-import { ProductCard, ProductCardSkeleton } from '../components/ProductCard';
+import { HeroCarousel } from '../components/HeroCarousel';
+import { FeaturedProductsFeed } from '../components/FeaturedProductsFeed';
+import { CategoryProductsFeed } from '../components/CategoryProductsFeed';
 import './Home.css';
 
 export const Home = () => {
-  const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const budgetBargains = [
+    { title: "T-Shirts", subtitle: "UNDER ₹999", img: "/images/tshirt.png", link: "/products?category=men's%20clothing" },
+    { title: "Workout-Ready Tops", subtitle: "UNDER ₹999", img: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&q=80", link: "/products?category=women's%20clothing" },
+    { title: "Tote Handbags", subtitle: "STARTING ₹699", img: "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&q=80", link: "/products" },
+    { title: "Dazzling Clutches", subtitle: "STARTING ₹599", img: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?w=400&q=80", link: "/products" },
+    { title: "Bold Sunglasses", subtitle: "UNDER ₹1299", img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80", link: "/products" },
+  ];
 
-  useEffect(() => {
-    const loadFeatured = async () => {
-      try {
-        const products = await fetchProducts();
-        // Just get 4 random products or the first 4 for featured
-        setFeaturedProducts(products.slice(0, 4));
-      } catch (error) {
-        console.error("Failed to load featured products", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadFeatured();
-  }, []);
+  const wowDeals = [
+    { brand: "TOMMY HILFIGER", subtitle: "MIN. 50% OFF", desc: "Effortless Styles", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80", link: "/products?category=men's%20clothing" },
+    { brand: "FRENCH CONNECTION", subtitle: "MIN. 55% OFF", desc: "Casual-Day Picks", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80", link: "/products?category=women's%20clothing" },
+    { brand: "U.S. POLO ASSN.", subtitle: "MIN. 50% OFF", desc: "Daily Comfort", img: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80", link: "/products" },
+    { brand: "BIRKENSTOCK", subtitle: "UPTO 40% OFF", desc: "Premium Comfort", img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80", link: "/products" },
+    { brand: "FLYING MACHINE", subtitle: "MIN. 55% OFF", desc: "Refined Edge", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80", link: "/products" },
+  ];
 
-  const features = [
-    { icon: <Truck size={32} />, title: "Free Shipping", desc: "On all orders over $50" },
-    { icon: <ShieldCheck size={32} />, title: "Secure Payment", desc: "100% secure payment" },
-    { icon: <TrendingUp size={32} />, title: "Best Quality", desc: "Top products guaranteed" }
+  const shopByCategory = [
+    { title: "Ethnic Wear", offer: "50-80% OFF", img: "/images/ethnic_wear.png", link: "/products?category=women's%20clothing" },
+    { title: "Kids Wear", offer: "40-70% OFF", img: "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?w=400&q=80", link: "/products?category=kids" },
+    { title: "Men's Footwear", offer: "50-70% OFF", img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80", link: "/products" },
+    { title: "Bags & Belts", offer: "40-80% OFF", img: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=400&q=80", link: "/products" },
+    { title: "Headphones & Speakers", offer: "UP TO 70% OFF", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80", link: "/products" },
+    { title: "Home Decor", offer: "40-70% OFF", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80", link: "/products" },
+    { title: "Casual Wear", offer: "40-80% OFF", img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=80", link: "/products?category=men's%20clothing" },
+    { title: "Men's Activewear", offer: "30-70% OFF", img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400&q=80", link: "/products?category=men's%20clothing" },
+    { title: "Women's Activewear", offer: "30-70% OFF", img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=400&q=80", link: "/products?category=women's%20clothing" },
+    { title: "Western Wear", offer: "40-80% OFF", img: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80", link: "/products?category=women's%20clothing" },
+    { title: "Watches", offer: "Upto 80% OFF", img: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400&q=80", link: "/products?category=jewelery" },
+    { title: "Grooming", offer: "Upto 60% OFF", img: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&q=80", link: "/products?category=beauty" },
   ];
 
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container hero-content">
-          <div className="hero-text animate-fade-in">
-            <h1 className="hero-title">
-              Discover the Newest Trends in <span className="text-primary-color">Fashion & Electronics</span>
-            </h1>
-            <p className="hero-subtitle">
-              Explore our premium collection of high-quality products. Upgrade your style and tech today.
-            </p>
-            <div className="hero-actions">
-              <Link to="/products" className="btn btn-primary hero-btn">
-                Shop Now <ArrowRight size={20} />
-              </Link>
+    <div className="home-container">
+      
+      {/* Top Header Buffer: Hero Carousel */}
+      <HeroCarousel />
+
+      <div className="container">
+        {/* Main Sale Banner: Split Layout Architecture */}
+      <div className="main-sale-banner-wrapper">
+        
+        {/* Overlay Accents: Floating Badge Layer */}
+        <div className="floating-coupon-badge">
+          <span className="badge-text">FLAT ₹300 OFF</span>
+          <span className="badge-subtext">LIVE NOW</span>
+        </div>
+
+        <div className="main-sale-banner-css split-layout">
+          
+          {/* Left Column: Text Matrix */}
+          <div className="banner-left-col">
+            <h2 className="mega-sale-text">MEGA SAVINGS SALE</h2>
+            <h1 className="discount-text">50-80% OFF</h1>
+            <p className="offers-text">Offers You Can't Resist!</p>
+            <Link to="/products" className="shop-now-link">
+              <button className="shop-now-btn">SHOP NOW</button>
+            </Link>
+          </div>
+
+          {/* Right Column: Vacant Space Optimization */}
+          <div className="banner-right-col">
+             {/* Male Model Group */}
+             <div className="model-group">
+                <img src="/images/male_model.png" alt="Male Model" className="model-img" />
+                <Link to="/products?category=men's%20clothing" className="gender-pill">Him ❯</Link>
+             </div>
+             
+             {/* Female Model Group */}
+             <div className="model-group">
+                <img src="/images/female_model.png" alt="Female Model" className="model-img" />
+                <Link to="/products?category=women's%20clothing" className="gender-pill">Her ❯</Link>
+             </div>
+          </div>
+
+          {/* Animated Text Ticker Marquee */}
+          <div className="banner-marquee">
+            <div className="marquee-content">
+              <span>SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ </span>
+              <span>SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ SHOP NOW ❯ </span>
             </div>
           </div>
+          
         </div>
-      </section>
+      </div>
 
-      {/* Features Section */}
-      <section className="features bg-surface">
-        <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, idx) => (
-              <div key={idx} className="feature-card">
-                <div className="feature-icon text-primary-color">{feature.icon}</div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-desc text-secondary">{feature.desc}</p>
-              </div>
+      {/* BUDGET BARGAINS */}
+      <section className="home-section">
+        <h2 className="section-title colored-title">BUDGET BARGAINS</h2>
+        <div className="slider-container">
+          <div className="slider-track">
+            {budgetBargains.map((item, index) => (
+              <Link to={item.link} key={index} className="slider-card bargain-card">
+                <img src={item.img} alt={item.title} />
+                <div className="card-overlay">
+                  <span className="card-subtitle">{item.subtitle}</span>
+                  <span className="card-title">{item.title}</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="featured-products section-padding">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Featured Products</h2>
-            <Link to="/products" className="text-primary-color flex items-center gap-2 font-medium">
-              View All <ArrowRight size={16} />
+
+      {/* SHOP BY CATEGORY */}
+      <section className="home-section">
+        <h2 className="section-title text-black">SHOP BY CATEGORY</h2>
+        <div className="category-grid">
+          {shopByCategory.map((cat, index) => (
+            <Link to={cat.link} key={index} className="category-card">
+              <div className="cat-img-wrapper">
+                <img src={cat.img} alt={cat.title} />
+              </div>
+              <div className="cat-info">
+                <span className="cat-title">{cat.title}</span>
+                <span className="cat-offer">{cat.offer}</span>
+                <span className="cat-shop-btn">Shop Now</span>
+              </div>
             </Link>
-          </div>
-          
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {loading 
-              ? Array.from({ length: 4 }).map((_, idx) => <ProductCardSkeleton key={idx} />)
-              : featuredProducts.map(product => <ProductCard key={product.id} product={product} />)
-            }
-          </div>
+          ))}
         </div>
       </section>
-      
-      {/* Categories Banner */}
-      <section className="categories-banner section-padding bg-surface">
-        <div className="container">
-          <div className="banner-content glass animate-fade-in">
-            <h2>Explore Our Categories</h2>
-            <p>From latest electronics to trendy fashion clothing.</p>
-            <div className="flex gap-4 justify-center mt-6 flex-wrap">
-              <Link to="/products?category=electronics" className="btn btn-outline">Electronics</Link>
-              <Link to="/products?category=jewelery" className="btn btn-outline">Jewelry</Link>
-              <Link to="/products?category=men's clothing" className="btn btn-outline">Men's Clothing</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      {/* FEATURED PRODUCTS */}
+      <FeaturedProductsFeed />
+
+      {/* MULTI-CATEGORY CONTENT DENSITY EXPANSION */}
+      <CategoryProductsFeed category="men's clothing" title="MEN'S ESSENTIALS" limit={4} />
+      <CategoryProductsFeed category="women's clothing" title="WOMEN'S TRENDS" limit={4} />
+      <CategoryProductsFeed category="genz" title="GENZ AESTHETIC" limit={4} />
+      <CategoryProductsFeed category="beauty" title="BEAUTY & GROOMING" limit={4} />
+      <CategoryProductsFeed category="kids" title="KIDS COLLECTION" limit={4} />
+
+      </div>
     </div>
   );
 };
