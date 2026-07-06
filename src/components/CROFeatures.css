@@ -1,0 +1,290 @@
+/* CROFeatures.css - Vanilla CSS implementation for Conversion Optimization modules */
+
+/* 1. Deals of the Day */
+.cro-deals-container {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.cro-deals-header {
+  background-color: #dc2626;
+  color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.cro-deals-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fef2f2;
+}
+
+.cro-deals-timer {
+  font-size: 1.875rem;
+  font-family: monospace;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.cro-deals-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cro-deals-product {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.2s, color 0.2s;
+  border: 1px solid #f8fafc;
+  cursor: pointer;
+}
+
+.cro-deals-product:hover {
+  background-color: #f8fafc;
+}
+
+.cro-deals-product:hover .cro-deals-product-title {
+  color: #dc2626;
+}
+
+.cro-deals-image {
+  height: 5rem;
+  width: 5rem;
+  background-color: #e2e8f0;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cro-deals-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cro-deals-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s;
+}
+
+.cro-deals-product:hover .cro-deals-image::after {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cro-deals-product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cro-deals-product-title {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.cro-deals-price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.cro-deals-price-current {
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 1.125rem;
+}
+
+.cro-deals-price-old {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-size: 0.875rem;
+}
+
+
+/* 2. Dynamic Inventory Alert */
+.cro-inventory-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cro-inventory-badge-container {
+  position: relative;
+  height: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.cro-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  gap: 0.375rem;
+}
+
+.cro-badge.active-a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cro-badge.inactive-a {
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+
+.cro-badge.active-b {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cro-badge.inactive-b {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.cro-badge-text-a {
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.cro-badge-text-b {
+  color: #d97706;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+
+/* 3. Live Sales Ticker */
+.cro-ticker-popup {
+  position: fixed;
+  bottom: 3rem;
+  left: 1.5rem;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.cro-ticker-popup.phase-ingress {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 0.5s ease-out;
+}
+
+.cro-ticker-popup.phase-rest {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: none;
+}
+
+.cro-ticker-popup.phase-egress {
+  opacity: 0;
+  transform: translate(0, -10px);
+  transition: all 0.5s ease-in;
+}
+
+.cro-ticker-popup.phase-hidden {
+  opacity: 0;
+  transform: translate(-3rem, 0);
+  transition: none;
+}
+
+.cro-ticker-capsule {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid #1e293b;
+  max-width: 24rem;
+  pointer-events: auto;
+}
+
+.cro-ticker-dot-wrapper {
+  position: relative;
+  display: flex;
+  height: 0.75rem;
+  width: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cro-ticker-dot-ping {
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background-color: #34d399;
+  opacity: 0.75;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.cro-ticker-dot-core {
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: #10b981;
+}
+
+.cro-ticker-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.375;
+}

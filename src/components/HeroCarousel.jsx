@@ -60,7 +60,7 @@ export const HeroCarousel = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((current) => (current + 1) % carouselData.length);
-    }, 6000);
+    }, 2500);
     return () => clearInterval(timer);
   }, []);
 

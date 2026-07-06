@@ -10,6 +10,7 @@ import { Button } from '../components/Button';
 import { Skeleton } from '../components/Skeleton';
 import { ProductCard } from '../components/ProductCard';
 import { ProductMetadata } from '../components/ProductMetadata';
+import { DynamicInventoryAlert } from '../components/CROFeatures';
 import './ProductDetails.css';
 
 export const ProductDetails = () => {
@@ -168,6 +169,9 @@ export const ProductDetails = () => {
               >+</button>
             </div>
             
+            <div className="w-full mt-4">
+              <DynamicInventoryAlert />
+            </div>
             <div className="action-buttons">
               <Button onClick={handleAddToCart} className="add-to-cart-btn flex-grow">
                 <ShoppingCart size={20} /> Add to Cart

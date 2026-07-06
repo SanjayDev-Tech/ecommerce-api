@@ -10,6 +10,7 @@ import { OrdersProvider } from './context/OrdersContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ProfileModal } from './components/ProfileModal';
+import { DealsPopup } from './components/DealsPopup';
 
 // Context
 import { AuthProvider } from './context/AuthContext';
@@ -49,6 +50,7 @@ function App() {
                   </main>
                   <Footer />
                   <ProfileModal />
+                  <DealsPopup />
                 </div>
               </Router>
               </ToastProvider>

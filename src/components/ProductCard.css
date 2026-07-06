@@ -16,9 +16,12 @@
 .product-image-container {
   position: relative;
   width: 100%;
-  padding-top: 133%; /* Tall aspect ratio approx 3:4 */
-  background-color: #f7f8f9;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-image {

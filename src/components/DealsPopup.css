@@ -1,0 +1,184 @@
+/* DealsPopup.css - Vanilla CSS implementation for Deals Popup */
+
+.cro-popup-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 1.5rem;
+}
+
+.cro-popup-card {
+    position: relative;
+    width: 100%;
+    max-width: 24rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: popupFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 4px solid #ff3f6c; /* High conversion alert theme */
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cro-popup-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    color: #fff1f5;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.cro-popup-close:hover {
+    color: #ffffff;
+}
+
+.cro-popup-header {
+    background-color: #ff3f6c;
+    color: #ffffff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.cro-popup-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.cro-popup-timer {
+    font-size: 2.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    line-height: 1;
+}
+
+.cro-popup-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background-color: #f8fafc;
+}
+
+.cro-popup-product {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cro-popup-image {
+    height: 5.5rem;
+    width: 5.5rem;
+    background-color: #e2e8f0;
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cro-popup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cro-popup-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cro-popup-product-title {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 1.125rem;
+    line-height: 1.2;
+}
+
+.cro-popup-price-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cro-popup-price-current {
+    color: #ff3f6c;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.cro-popup-price-old {
+    color: #94a3b8;
+    text-decoration: line-through;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.cro-popup-cta {
+    width: 100%;
+    background-color: #ff3f6c;
+    color: #ffffff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 800;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px -1px rgba(255, 63, 108, 0.3), 0 2px 4px -2px rgba(255, 63, 108, 0.3);
+}
+
+.cro-popup-cta:hover {
+    background-color: #e6355f;
+}
+
+.cro-popup-cta:active {
+    transform: scale(0.98);
+}

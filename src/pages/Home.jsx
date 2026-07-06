@@ -4,6 +4,8 @@ import { HeroCarousel } from '../components/HeroCarousel';
 import { FeaturedProductsFeed } from '../components/FeaturedProductsFeed';
 import { CategoryProductsFeed } from '../components/CategoryProductsFeed';
 import { BudgetBargains } from '../components/BudgetBargains';
+import { BankOffers } from '../components/BankOffers';
+import { LiveSalesTicker } from '../components/CROFeatures';
 import './Home.css';
 
 export const Home = () => {
@@ -84,6 +86,9 @@ export const Home = () => {
         </div>
       </div>
 
+      {/* Dynamic Bank Promotions Banner Strip */}
+      <BankOffers />
+
       {/* BUDGET BARGAINS */}
       <BudgetBargains />
 
@@ -117,6 +122,7 @@ export const Home = () => {
       <CategoryProductsFeed category="beauty" title="BEAUTY & GROOMING" limit={4} />
       <CategoryProductsFeed category="kids" title="KIDS COLLECTION" limit={4} />
 
+      <LiveSalesTicker />
       </div>
     </div>
   );

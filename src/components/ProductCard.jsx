@@ -10,6 +10,23 @@ export const ProductCard = ({ product }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToast } = useToast();
 
+  const getMappedImage = (title, originalImage) => {
+    if (!title) return originalImage;
+    const lowerTitle = title.toLowerCase();
+    if (lowerTitle.includes('turtleneck')) {
+      return "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=400&auto=format&fit=crop";
+    }
+    if (lowerTitle.includes('oxford shirt')) {
+      return "/images/striped-oxford-shirt.png";
+    }
+    if (lowerTitle.includes('cargo trousers') || lowerTitle.includes('cargo work trousers') || lowerTitle.includes('parachute pants')) {
+      return "/images/cargo-work-trousers.png";
+    }
+    return originalImage;
+  };
+
+  const displayImage = getMappedImage(product.title, product.image);
+
   const handleToggleWishlist = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -24,7 +41,16 @@ export const ProductCard = ({ product }) => {
   return (
     <Link to={`/products/${product.id}`} className="myntra-product-card">
       <div className="product-image-container">
-        <img src={product.image} alt={product.title} className="product-image" loading="lazy" />
+        <img 
+          src={displayImage} 
+          alt={product.title} 
+          className="product-image" 
+          loading="lazy" 
+          onError={(e) => { 
+            e.target.onerror = null; 
+            e.target.src = "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=400&auto=format&fit=crop"; 
+          }}
+        />
         <div className="product-rating-overlay">
           <span className="rating-val">{product.rating?.rate || '4.0'}</span>
           <Star size={10} fill="#14b8a6" color="#14b8a6" className="rating-star" />
