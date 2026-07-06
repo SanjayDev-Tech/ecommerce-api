@@ -4,6 +4,7 @@ import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useAuth } from '../context/AuthContext';
+import { ProfileDropdown } from './ProfileDropdown';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -107,46 +108,7 @@ export const Navbar = () => {
 
         {/* Actions (Profile, Wishlist, Bag) */}
         <div className="navbar-actions">
-          <div className="profile-menu-container action-item-container desktop-only">
-            <button className="action-item">
-              <User size={20} strokeWidth={2} />
-              <span className="action-text">Profile</span>
-            </button>
-
-            <div className="profile-dropdown-card">
-              {user ? (
-                <>
-                  <div className="profile-dropdown-header">
-                    <h4>Hello, {user.name}!</h4>
-                    <p>{user.email}</p>
-                  </div>
-                  <div className="profile-dropdown-actions">
-                    <button className="login-signup-btn w-full font-bold" style={{ backgroundColor: '#fff', cursor: 'pointer' }} onClick={handleLogout}>
-                      LOGOUT
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="profile-dropdown-header">
-                    <h4>Welcome</h4>
-                    <p>To access account and manage orders</p>
-                  </div>
-                  <div className="profile-dropdown-actions">
-                    <Link to="/login" className="login-signup-btn">
-                      LOGIN / SIGNUP
-                    </Link>
-                  </div>
-                </>
-              )}
-              <div className="profile-dropdown-links">
-                <Link to="/orders">Orders</Link>
-                <Link to="/wishlist">Wishlist</Link>
-                <Link to="/giftcards">Gift Cards</Link>
-                <Link to="/contact">Contact Us</Link>
-              </div>
-            </div>
-          </div>
+          <ProfileDropdown />
           
           <Link to="/wishlist" className="action-item">
             <div className="icon-wrapper">
