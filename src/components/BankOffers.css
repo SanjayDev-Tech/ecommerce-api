@@ -157,18 +157,44 @@
 
 /* Auto-Responsive Viewport Constraints */
 @media (max-width: 768px) {
+  .bank-offers-wrapper {
+    padding: 24px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .bank-strip-container {
+    width: 100%;
+    margin: 0;
+  }
+
   .bank-offer-slide {
     flex-direction: column;
     text-align: center;
     gap: 12px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
+  .bank-badges-row {
+    justify-content: center !important;
+    padding-right: 0 !important;
+    width: 100%;
+  }
+
   .bank-offer-text-block {
-    border-left: none;
-    border-top: 2px solid #e5e7eb;
-    padding-left: 0;
-    padding-top: 12px;
+    border-left: none !important;
+    border-top: 1px solid #e5e7eb;
+    padding-left: 0 !important;
+    padding-top: 12px !important;
     align-items: center;
+    width: 100%;
+  }
+
+  .tc-label-node {
+    display: none;
   }
 }
 
@@ -176,10 +202,12 @@
   .bank-offers-ticket {
     flex-direction: column;
     min-height: auto;
-    border-right: 2px solid #3b82f6;
-    border-radius: 16px;
+    border-right: 2px solid #3b82f6 !important;
+    border-radius: 12px !important;
     -webkit-mask-image: none;
     mask-image: none;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .bank-offers-ticket::after {

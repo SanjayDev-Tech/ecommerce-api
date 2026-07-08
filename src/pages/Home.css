@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  position: relative;
+  position: relative; 
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
 }
@@ -23,8 +23,6 @@
   position: relative;
   overflow: hidden;
 }
-
-
 
 .banner-content {
   display: flex;
@@ -80,8 +78,8 @@
 .floating-coupon-badge {
   position: absolute;
   top: -15px;
-  left: 30px; /* Anchored perfectly within bounds */
-  background: #282c3f; /* Deep Navy */
+  left: 30px; 
+  background: #282c3f; 
   color: white;
   padding: 8px 16px;
   border-radius: 8px;
@@ -90,7 +88,7 @@
   align-items: center;
   gap: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  border: 2px solid #50e3c2; /* Cyan/Mint accent similar to reference */
+  border: 2px solid #50e3c2; 
 }
 
 .badge-text {
@@ -119,6 +117,7 @@
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
+  isolation: isolate; 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   color: #0f172a;
@@ -130,37 +129,27 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 60px 40px 70px 40px; /* Increased vertical padding for a grander hero feel */
+  padding: 60px 40px 70px 40px; 
   text-align: left;
 }
 
 @keyframes slideUpFade {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes textFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 /* Left Column: Text Matrix */
 .banner-left-col {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; /* 8px multiplier system */
+  gap: 16px; 
   z-index: 3;
 }
 
@@ -183,7 +172,7 @@
   margin: 0;
   line-height: 1;
   color: #0f172a;
-  text-shadow: none; /* Reset shadow for slate theme */
+  text-shadow: none; 
   animation: slideUpFade 0.2s ease-out 0.03s both, textFloat 2.5s ease-in-out 0.2s infinite;
   display: inline-block;
 }
@@ -226,14 +215,14 @@
 
 /* Right Column: Vacant Space Optimization */
 .banner-right-col {
-  flex: 1;
+  flex: 0 0 50%;
   position: relative;
-  height: 380px; /* Significantly increased height for structural impact */
+  height: 380px; 
   display: flex;
-  justify-content: flex-end; /* Push to right edge */
-  align-items: flex-end;
-  gap: 20px; /* Space between models */
-  padding-bottom: 25px; /* Offset to keep pills within banner bounds */
+  justify-content: flex-end; 
+  align-items: stretch;
+  gap: 20px; 
+  padding-bottom: 25px; 
   padding-right: 20px;
 }
 
@@ -242,17 +231,17 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  height: calc(100% + 60px); /* Allow models to break top edge significantly */
-  width: 240px; /* Much wider width */
+  height: calc(100% + 60px);
+  width: 240px; 
 }
 
 .model-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Fill the box completely */
-  object-position: top center; /* Anchor focus to the model's head/torso */
+  object-fit: cover; 
+  object-position: top center; 
   opacity: 1;
-  mix-blend-mode: multiply; /* Safely knocks out solid white against the light gray slate */
+  mix-blend-mode: multiply; 
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -263,7 +252,7 @@
 
 .gender-pill {
   position: absolute;
-  bottom: -15px; /* Exact placement below the model asset */
+  bottom: -15px; 
   background: white;
   color: #282c3f;
   text-decoration: none;
@@ -278,7 +267,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .gender-pill:hover {
   transform: translateY(-2px) scale(1.05);
@@ -303,7 +291,7 @@
   display: flex;
   white-space: nowrap;
   animation: marquee 20s linear infinite;
-  color: #0f172a; /* Changed from white to slate black for contrast */
+  color: #0f172a; 
   font-weight: 900;
   font-size: 14px;
   letter-spacing: 3px;
@@ -311,59 +299,13 @@
 
 .marquee-content span {
   padding-right: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
-}
-
-/* CSS Bank Offers */
-.bank-offers-css {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #eaeaec;
-  background-color: #ffffff;
-  padding: 20px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  color: #535766;
-  box-sizing: border-box;
-}
-
-.bank-offer-highlight {
-  color: #ff3f6c;
-  font-weight: 800;
-}
-
-/* Floating Tab */
-.floating-offer-tab {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: #535766;
-  color: white;
-  padding: 15px 8px;
-  border-radius: 4px 0 0 4px;
-  z-index: 100;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.floating-offer-tab:hover {
-  background-color: #282c3f;
-}
-
-.tab-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 
 /* New Section Styles */
@@ -383,217 +325,15 @@
   margin: 0;
 }
 
-.colored-title {
-  color: transparent;
-  background: linear-gradient(135deg, #ff3f6c 0%, #fb56c1 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
 .text-black {
   color: #282c3f;
-}
-
-/* Slider (Budget Bargains) */
-.slider-container {
-  width: 100%;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  scrollbar-width: thin;
-  scrollbar-color: #ff3f6c #f5f5f6;
-}
-
-.slider-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.slider-container::-webkit-scrollbar-track {
-  background: #f5f5f6;
-  border-radius: 4px;
-}
-
-.slider-container::-webkit-scrollbar-thumb {
-  background-color: #ff3f6c;
-  border-radius: 4px;
-}
-
-.slider-track {
-  display: flex;
-  gap: 20px;
-  padding: 10px 0;
-}
-
-.slider-card {
-  min-width: 250px;
-  height: 350px;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.slider-card:hover {
-  transform: translateY(-5px);
-}
-
-.slider-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.slider-card:hover img {
-  transform: scale(1.05);
-}
-
-.card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 40px 20px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-subtitle {
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-/* Wow-Worthy Deals */
-.wow-deals-banner {
-  background: linear-gradient(135deg, #ff3f6c 0%, #fb56c1 100%);
-  border-radius: 8px;
-  padding: 30px;
-  text-align: center;
-  color: white;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-/* cutout tag shape */
-.wow-deals-banner::before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-right: 15px solid white;
-}
-
-.wow-deals-content h3 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.wow-deals-content h2 {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.wow-deals-content p {
-  margin: 10px 0 0 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.deals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.deal-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border: 2px solid #ff3f6c;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.deal-card:hover {
-  transform: translateY(-5px);
-}
-
-.deal-img-wrapper {
-  height: 250px;
-  width: 100%;
-}
-
-.deal-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.deal-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.deal-brand-logo {
-  background: white;
-  color: #282c3f;
-  font-weight: 800;
-  font-size: 14px;
-  text-align: center;
-  padding: 12px 10px;
-  border-bottom: 1px solid #eaeaec;
-}
-
-.deal-bottom-content {
-  background: linear-gradient(135deg, #ff3f6c 0%, #fb56c1 100%);
-  color: white;
-  padding: 15px;
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.deal-discount {
-  font-size: 22px;
-  font-weight: 800;
-}
-
-.deal-desc {
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 5px;
-  opacity: 0.9;
 }
 
 /* Shop By Category */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px; /* 8px multiplier */
+  gap: 16px; 
 }
 
 .category-card {
@@ -622,12 +362,12 @@
 }
 
 .cat-info {
-  background: #fdf5f6; /* Very light pink */
-  padding: 16px 8px; /* 8px multiplier */
+  background: #fdf5f6; 
+  padding: 16px 8px; 
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* 8px multiplier */
+  gap: 8px; 
 }
 
 .cat-title {
@@ -649,7 +389,8 @@
   margin-top: 5px;
 }
 
-/* Responsive adjustments */
+
+/* RESPONSIVE LAYOUTS - MOBILE FIRST PRINCIPLES */
 @media (max-width: 768px) {
   .top-discount-banner {
     padding: 15px;
@@ -661,92 +402,119 @@
     text-align: center;
   }
   
-  .vertical-divider {
-    display: none;
+  .vertical-divider,
+  .top-discount-banner::before,
+  .top-discount-banner::after,
+  .floating-offer-tab {
+    display: none; 
   }
   
   .top-discount-banner h1 {
-    font-size: 24px;
-  }
-  
-  .top-discount-banner::before,
-  .top-discount-banner::after {
-    display: none;
-  }
-  
-  .floating-offer-tab {
-    display: none; /* Hide on mobile to save space */
+    font-size: clamp(20px, 5vw, 24px);
   }
 
-  /* Main Sale Banner Mobile Fix - Keep Side-by-Side like Laptop */
+  /* Main Sale Banner - Pure Flexbox Rewrite */
   .main-sale-banner-css.split-layout {
+    display: flex;
     flex-direction: row;
-    padding: 30px 10px 30px 10px; /* extra top padding to avoid badge overlap */
-    height: 200px; /* Fixed scaled height */
-    align-items: stretch; /* Ensure flex children take full height */
+    flex-wrap: nowrap;
+    padding: 30px 10px 45px 10px; /* Space at bottom for restored marquee */
+    height: auto;
+    align-items: center;
   }
 
+  /* Left text column shrinks dynamically */
   .banner-left-col {
-    flex: 1.2;
+    flex: 1 1 auto;
+    min-width: 0; /* Crucial to prevent flex overflow */
     align-items: flex-start;
-    justify-content: center; /* Center contents vertically */
-    text-align: left;
-    width: auto;
-    gap: 8px;
+    justify-content: center;
     padding-left: 5px;
+    gap: 8px;
   }
 
   .banner-left-col .mega-sale-text {
-    font-size: 10px;
+    font-size: clamp(9px, 3vw, 12px);
     padding: 4px 8px;
-    letter-spacing: 0.5px;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .banner-left-col .discount-text {
-    font-size: 28px; /* Slightly smaller to fit nicely */
+    font-size: clamp(22px, 6vw, 32px);
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .banner-left-col .offers-text {
-    font-size: 11px;
+    font-size: clamp(10px, 3.5vw, 14px);
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .shop-now-btn {
     padding: 6px 14px;
     font-size: 11px;
+    white-space: nowrap;
   }
 
+  /* Right column strictly maintains width for models */
   .banner-right-col {
-    flex: 1;
-    height: 200px; /* Explicit height to prevent collapse */
-    width: auto;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-right: 5px;
-    padding-bottom: 0;
-    margin-top: 0;
+    flex: 0 0 130px; /* Firm basis width to guarantee model space */
+    width: 130px;
+    height: 140px; /* Explicit pixel height to prevent nested flex collapse */
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
     gap: 5px;
+    padding: 0;
+    margin: 0;
   }
 
   .model-group {
-    width: 48%;
-    max-width: 90px;
-    height: 220px; /* Explicit pixel height > banner height to break top edge */
+    flex: 1; /* Both models share the 130px space evenly */
+    height: 100%; 
+    min-width: 0;
+    position: relative;
+  }
+
+  .model-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    mix-blend-mode: normal; /* Disables problematic Safari rendering bug */
   }
 
   .gender-pill {
     font-size: 9px;
-    padding: 4px 10px;
-    bottom: -2px;
+    padding: 4px 8px;
+    bottom: 5px;
   }
 
   .floating-coupon-badge {
     left: 10px;
+    right: 10px;
     top: -10px;
     padding: 4px 8px;
+    max-width: calc(100% - 20px);
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
-  .badge-text {
+  .badge-text { font-size: 11px; }
+  .badge-subtext { font-size: 10px; }
+
+  /* Restore Marquee on mobile */
+  .banner-marquee {
+    display: block;
+    padding: 4px 0;
+  }
+
+  .marquee-content {
     font-size: 11px;
+    letter-spacing: 2px;
   }
 
   /* Shop By Category Horizontal Scroll on Mobile */

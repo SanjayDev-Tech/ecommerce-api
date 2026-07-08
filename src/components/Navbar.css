@@ -349,4 +349,16 @@
     font-size: 10px;
     font-weight: 700;
   }
+
+  .action-text {
+    display: none;
+  }
+
+  .navbar-logo .logo-text {
+    font-size: 18px !important;
+  }
+  
+  .navbar-actions {
+    gap: 0.5rem;
+  }
 }
