@@ -539,3 +539,26 @@
     scroll-snap-align: start;
   }
 }
+
+/* Vertical Stacking for Narrow Devices (< 400px) */
+@media (max-width: 400px) {
+  .main-sale-banner-css.split-layout {
+    flex-direction: column;
+    padding: 40px 10px 50px 10px; /* Adjust padding for column layout */
+    height: auto;
+  }
+
+  .banner-left-col {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .banner-right-col {
+    width: 100%;
+    flex: 0 0 160px; /* Generous height for models */
+    height: 160px;
+    margin-top: 20px; /* Space between text and models */
+  }
+}
