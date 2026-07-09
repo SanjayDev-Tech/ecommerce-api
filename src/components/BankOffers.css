@@ -1,6 +1,6 @@
 .bank-offers-wrapper {
   width: 100%;
-  padding: 40px 0 24px 0; /* Massive padding to guarantee visual separation */
+  padding: 40px 0 24px 0; 
   display: flex;
   justify-content: center;
 }
@@ -23,7 +23,7 @@
   width: 100%;
   min-height: 72px;
   background-color: #ffffff;
-  border: 2px solid #3b82f6; /* 2px solid layer wrapper */
+  border: 2px solid #3b82f6; 
   border-right: none;
   border-radius: 16px;
   border-top-right-radius: 0;
@@ -32,7 +32,6 @@
   align-items: stretch;
   position: relative;
   
-  /* Sharp CSS mask path clip mapped to absolute bounds */
   -webkit-mask-image: 
     linear-gradient(black, black), 
     radial-gradient(circle at right, transparent 6px, black 6.5px);
@@ -48,11 +47,10 @@
   mask-repeat: no-repeat, repeat-y;
 }
 
-/* Inline vector SVG mask background layer */
 .bank-offers-ticket::after {
   content: "";
   position: absolute;
-  top: -2px; /* Anchor to exact border bounds */
+  top: -2px; 
   bottom: -2px;
   right: 0;
   width: 12px;
@@ -78,6 +76,7 @@
   margin: 0 auto;
   padding: 12px 24px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 32px;
@@ -155,81 +154,58 @@
   text-orientation: mixed;
 }
 
-/* Auto-Responsive Viewport Constraints */
+/* Maintain Side-by-Side Torn Ticket Layout on Mobile */
 @media (max-width: 768px) {
   .bank-offers-wrapper {
-    padding: 24px 16px;
-    width: 100%;
+    padding: 24px 20px 24px 10px; /* Extra right padding for the T&C text */
     box-sizing: border-box;
-    overflow: hidden;
   }
 
-  .bank-strip-container {
-    width: 100%;
-    margin: 0;
+  .bank-strip-parent {
+    min-height: 50px; /* Reduced from 76px */
+  }
+
+  .bank-offers-ticket {
+    min-height: 48px; /* Reduced from 72px */
   }
 
   .bank-offer-slide {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-    padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 8px 12px;
+    gap: 8px; /* Tighten gap between badges and text */
+    justify-content: space-between;
   }
   
   .bank-badges-row {
-    justify-content: center !important;
-    padding-right: 0 !important;
-    width: 100%;
+    padding-right: 8px;
+    gap: 4px;
+    flex: 1 1 45%; /* Give left side fair space */
+  }
+
+  .bank-badge {
+    padding: 3px 6px;
+    font-size: 9px;
+    border-radius: 4px;
   }
 
   .bank-offer-text-block {
-    border-left: none !important;
-    border-top: 1px solid #e5e7eb;
-    padding-left: 0 !important;
-    padding-top: 12px !important;
-    align-items: center;
-    width: 100%;
+    flex: 1 1 55%; /* Give right side fair space */
+    padding-left: 8px;
+    border-left: 1px solid #e5e7eb;
+    border-top: none;
+    align-items: flex-start;
+  }
+
+  .bank-offer-main-text {
+    font-size: 11px;
+  }
+
+  .bank-offer-subtext {
+    font-size: 9px;
+    line-height: 1.1;
   }
 
   .tc-label-node {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .bank-offers-ticket {
-    flex-direction: column;
-    min-height: auto;
-    border-right: 2px solid #3b82f6 !important;
-    border-radius: 12px !important;
-    -webkit-mask-image: none;
-    mask-image: none;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .bank-offers-ticket::after {
-    display: none;
-  }
-  
-  .bank-offers-tnc-divider {
-    border-left: none;
-    border-top: 1px dashed #94a3b8;
-    margin: 0 16px;
-    height: 1px;
-    width: auto;
-  }
-  
-  .bank-offers-tnc {
-    padding: 12px;
-    background-color: transparent;
-  }
-  
-  .bank-offers-tnc span {
-    writing-mode: horizontal-tb;
-    transform: none;
-    font-size: 11px;
+    right: -18px; /* Move slightly closer */
+    font-size: 9px;
   }
 }

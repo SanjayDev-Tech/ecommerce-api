@@ -495,10 +495,10 @@
 
   .floating-coupon-badge {
     left: 10px;
-    right: 10px;
     top: -10px;
     padding: 4px 8px;
     max-width: calc(100% - 20px);
+    width: max-content; /* Ensure it shrinks to fit the text instead of stretching */
     flex-wrap: wrap;
     gap: 6px;
   }
