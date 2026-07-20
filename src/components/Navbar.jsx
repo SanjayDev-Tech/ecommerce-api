@@ -67,12 +67,12 @@ export const Navbar = () => {
             lineHeight: 1,
             boxShadow: '0 2px 4px rgba(255, 63, 108, 0.3)'
           }}>
-            <span style={{ color: '#ffffff' }}>f</span>
-            <span style={{ color: '#ffffff', opacity: 0.9 }}>s</span>
+            <span style={{ color: '#ffffff' }}>n</span>
+            <span style={{ color: '#ffffff', opacity: 0.9 }}>c</span>
           </div>
           <span className="logo-text" style={{ marginLeft: '8px', fontSize: '24px', fontWeight: '800', letterSpacing: '-0.5px' }}>
-            <span style={{ color: '#282c3f' }}>fake</span>
-            <span style={{ color: '#ff3f6c' }}>store</span>
+            <span style={{ color: '#0f172a' }}>nova</span>
+            <span style={{ color: '#ff3f6c' }}>cart</span>
           </span>
         </Link>
 

@@ -7,8 +7,8 @@ export const Footer = () => {
     <footer className="footer">
       <div className="container footer-content">
         <div className="footer-brand">
-          <Link to="/" className="navbar-logo">
-            Fake<span className="text-primary-color">Store</span>
+          <Link to="/" className="navbar-logo" style={{ textDecoration: 'none', fontWeight: '800', fontSize: '24px', letterSpacing: '-0.5px' }}>
+            <span style={{ color: '#0f172a' }}>nova</span><span style={{ color: '#ff3f6c' }}>cart</span>
           </Link>
           <p className="text-secondary text-sm mt-4">
             A modern, responsive e-commerce frontend built with React, Vite, and CSS.
@@ -37,7 +37,7 @@ export const Footer = () => {
       </div>
       <div className="footer-bottom">
         <div className="container text-center text-sm text-secondary">
-          &copy; {new Date().getFullYear()} FakeStore. All rights reserved.
+          &copy; {new Date().getFullYear()} NovaCart. All rights reserved.
         </div>
       </div>
     </footer>
